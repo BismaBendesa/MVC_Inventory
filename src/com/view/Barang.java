@@ -5,6 +5,8 @@
  */
 package com.view;
 
+
+
 /**
  *
  * @author Bisma
@@ -12,7 +14,7 @@ package com.view;
 public class Barang extends javax.swing.JFrame {
 
     /**
-     * Creates new form Barang
+     * Creates new form Inventory
      */
     public Barang() {
         initComponents();

@@ -2,6 +2,11 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/IT%20Project/2022/Java/MVC_DataBarang/src/com/connection/DbCon.java</file>
+            <file>file:/C:/IT%20Project/2022/Java/MVC_DataBarang/src/com/model/ItemModel.java</file>
+            <file>file:/C:/IT%20Project/2022/Java/MVC_DataBarang/src/com/controller/ItemController.java</file>
+            <file>file:/C:/IT%20Project/2022/Java/MVC_DataBarang/src/com/view/Item.java</file>
+        </group>
     </open-files>
 </project-private>

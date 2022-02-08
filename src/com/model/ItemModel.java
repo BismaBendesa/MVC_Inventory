@@ -9,9 +9,11 @@ import com.connection.DbCon;
 import com.controller.ItemController;
 import com.view.Item;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,15 +23,39 @@ public class ItemModel implements ItemController {
 
     @Override
     public void Save(Item item) throws SQLException {
-       item.itemIdField.getText();
-       item.itemNameField.getText();
-       item.categoryCb.getSelectedItem().toString();
-       item.brandField.getText();
-       item.descriptionField.getText();
-       item.stockField.getText();
-       item.priceField.getText();
+       String itemId  = item.itemIdField.getText();
+       String itemName = item.itemNameField.getText();
+       String category = item.categoryCb.getSelectedItem().toString();
+       String brand = item.brandField.getText();
+       String description = item.descriptionField.getText();
+        int stock = Integer.parseInt(item.stockField.getText());
+      float price = Float.parseFloat(item.priceField.getText());
        
-       String sql = "";
+       String sql = "INSERT INTO `item`(`item_id`,`item_name`, `category`, `brand`, `description`, `stock`, `price`) VALUES (?,?,?,?,?,?,?)";
+       PreparedStatement ps;
+       
+       try{
+           ps = DbCon.getcon().prepareStatement(sql);
+           ps.setString(1, itemId);
+           ps.setString(2, itemName);
+           ps.setString(3, category);
+           ps.setString(4, brand);
+           ps.setString(5, description);
+           ps.setInt(6, stock);
+           ps.setFloat(7, price);
+           ps.executeUpdate();
+           
+           if (ps.executeUpdate() != 0){
+               JOptionPane.showMessageDialog(null, "Data Successfully Added");
+           } else {
+            JOptionPane.showMessageDialog(null, "not good");
+           }
+       } catch(Exception e){
+          
+       } finally{
+           New(item);
+           Display(item);
+       }
     }
 
     @Override
@@ -55,11 +81,13 @@ public class ItemModel implements ItemController {
     @Override
     public void SetCategoryCb(Item item) throws SQLException {
         String sql = "SELECT * FROM `category`";
+        
         ResultSet rs;
         try{
             rs = DbCon.getcon().createStatement().executeQuery(sql);
             while(rs.next()){
                 item.categoryCb.addItem(rs.getString("category_name"));
+                
             }
         } catch(Exception e){
             System.out.println(e);
@@ -89,6 +117,26 @@ public class ItemModel implements ItemController {
         } catch (Exception e){
             System.out.println(e);
         }
+    }
+
+    @Override
+    public void TableClicked(Item item) throws SQLException {
+        try{
+            int pilih = item.inventoryTable.getSelectedRow();
+            if (pilih == -1){
+                return;
+            }
+            item.itemIdField.setText(item.tblmodel.getValueAt(pilih, 0).toString());
+            item.itemNameField.setText(item.tblmodel.getValueAt(pilih, 1).toString());
+            item.categoryCb.setSelectedItem(item.tblmodel.getValueAt(pilih, 2).toString());
+            item.brandField.setText(item.tblmodel.getValueAt(pilih, 3).toString());
+            item.descriptionField.setText(item.tblmodel.getValueAt(pilih, 4).toString());
+            item.stockField.setText(item.tblmodel.getValueAt(pilih, 5).toString());
+            item.priceField.setText(item.tblmodel.getValueAt(pilih, 6).toString());
+        } catch (Exception e) {
+        
+        }
+        
     }
 
 }

@@ -94,7 +94,20 @@ public class ItemModel implements ItemController {
 
     @Override
     public void Delete(Item item) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       try{
+            Connection con = DbCon.getcon();
+            String sql = "DELETE FROM item WHERE item_id=?";
+            PreparedStatement prepare = con.prepareStatement(sql);
+            prepare.setString(1, item.itemIdField.getText());
+            prepare.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Data Successfully Deleted");
+            prepare.close();
+        } catch (Exception e){
+            System.out.println(e);
+        } finally{
+            Display(item);
+            New(item);
+        }
     }
 
     @Override

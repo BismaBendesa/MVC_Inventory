@@ -146,6 +146,11 @@ public class Item extends javax.swing.JFrame {
         });
 
         deleteBtn.setText("Delete");
+        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBtnActionPerformed(evt);
+            }
+        });
 
         logoutBtn.setText("Log Out");
         logoutBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -305,6 +310,15 @@ public class Item extends javax.swing.JFrame {
             Logger.getLogger(Item.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_editBtnMouseClicked
+
+    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
+        try {
+            // delete data
+            model.Delete(this);
+        } catch (SQLException ex) {
+            Logger.getLogger(Item.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_deleteBtnActionPerformed
 
     /**
      * @param args the command line arguments

@@ -70,7 +70,26 @@ public class ItemModel implements ItemController {
 
     @Override
     public void Edit(Item item) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try{
+            Connection con = DbCon.getcon();
+            String sql = "UPDATE item SET item_name=?, category=?, brand=?, description=?, stock=?, price=?" + " WHERE item_id=?";
+            PreparedStatement prepare = con.prepareStatement(sql);
+            prepare.setString(7, item.itemIdField.getText());
+            prepare.setString(1, item.itemNameField.getText());
+            prepare.setString(2, (String) item.categoryCb.getSelectedItem());
+            prepare.setString(3, item.brandField.getText());
+            prepare.setString(4, item.descriptionField.getText());
+            prepare.setString(5, item.stockField.getText());
+            prepare.setString(6, item.priceField.getText().replace("$", ""));
+            prepare.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Data Successfully Edited");
+            prepare.close();
+        } catch(Exception e){
+            System.out.println(e);
+        } finally{
+            Display(item);
+            New(item);
+        }
     }
 
     @Override

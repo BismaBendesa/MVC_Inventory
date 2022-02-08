@@ -139,6 +139,11 @@ public class Item extends javax.swing.JFrame {
         });
 
         editBtn.setText("Edit");
+        editBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editBtnMouseClicked(evt);
+            }
+        });
 
         deleteBtn.setText("Delete");
 
@@ -291,6 +296,15 @@ public class Item extends javax.swing.JFrame {
             Logger.getLogger(Item.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_inventoryTableMouseClicked
+
+    private void editBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editBtnMouseClicked
+        try {
+            // Edit data
+            model.Edit(this);
+        } catch (SQLException ex) {
+            Logger.getLogger(Item.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_editBtnMouseClicked
 
     /**
      * @param args the command line arguments

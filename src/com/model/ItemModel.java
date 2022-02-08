@@ -19,12 +19,17 @@ public class ItemModel implements ItemController {
 
     @Override
     public void Save(Item item) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public void New(Item item) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       item.itemIdField.setText("");
+       item.itemNameField.setText("");
+       item.brandField.setText("");
+       item.descriptionField.setText("");
+       item.stockField.setText("");
+       item.priceField.setText("");
     }
 
     @Override
@@ -50,5 +55,5 @@ public class ItemModel implements ItemController {
             System.out.println(e);
         }
     }
-    
+
 }

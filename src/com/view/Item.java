@@ -8,6 +8,7 @@ package com.view;
 import com.connection.DbCon;
 import com.model.ItemModel;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.DefaultComboBoxModel;
 
 
@@ -24,6 +25,14 @@ public class Item extends javax.swing.JFrame {
     
     public Item() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setTitle("Inventory System");
+        try{
+            model.SetCategoryCb(this);
+        } catch(Exception e){
+            System.out.print(e);
+        }
+        
         
     }
     

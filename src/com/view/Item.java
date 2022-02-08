@@ -39,7 +39,6 @@ public class Item extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         itemIdField = new javax.swing.JTextField();
         itemNameField = new javax.swing.JTextField();
-        categoryField = new javax.swing.JTextField();
         brandField = new javax.swing.JTextField();
         descriptionField = new javax.swing.JTextField();
         stockField = new javax.swing.JTextField();
@@ -51,6 +50,7 @@ public class Item extends javax.swing.JFrame {
         logoutBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         inventoryTable = new javax.swing.JTable();
+        categoryCb = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,12 +84,6 @@ public class Item extends javax.swing.JFrame {
             }
         });
 
-        categoryField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                categoryFieldActionPerformed(evt);
-            }
-        });
-
         newBtn.setText("New");
         newBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,6 +113,8 @@ public class Item extends javax.swing.JFrame {
         inventoryTable.setRowHeight(25);
         jScrollPane1.setViewportView(inventoryTable);
 
+        categoryCb.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Food", "Beverage" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -128,7 +124,7 @@ public class Item extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 32, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(newBtn)
                         .addGap(18, 18, 18)
@@ -162,10 +158,10 @@ public class Item extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(brandField, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(itemIdField, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(itemNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(categoryField, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(itemIdField)
+                                            .addComponent(itemNameField, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
+                                            .addComponent(categoryCb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addGap(56, 56, 56)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel8)
@@ -176,7 +172,7 @@ public class Item extends javax.swing.JFrame {
                             .addComponent(descriptionField, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(stockField, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(priceField, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(19, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,8 +195,8 @@ public class Item extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel8)
-                    .addComponent(categoryField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(priceField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(priceField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(categoryCb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -223,10 +219,6 @@ public class Item extends javax.swing.JFrame {
     private void itemNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemNameFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_itemNameFieldActionPerformed
-
-    private void categoryFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoryFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_categoryFieldActionPerformed
 
     private void newBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBtnActionPerformed
         // TODO add your handling code here:
@@ -269,14 +261,14 @@ public class Item extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField brandField;
-    private javax.swing.JTextField categoryField;
+    public javax.swing.JTextField brandField;
+    public javax.swing.JComboBox categoryCb;
     private javax.swing.JButton deleteBtn;
-    private javax.swing.JTextField descriptionField;
+    public javax.swing.JTextField descriptionField;
     private javax.swing.JButton editBtn;
-    private javax.swing.JTable inventoryTable;
-    private javax.swing.JTextField itemIdField;
-    private javax.swing.JTextField itemNameField;
+    public javax.swing.JTable inventoryTable;
+    public javax.swing.JTextField itemIdField;
+    public javax.swing.JTextField itemNameField;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -287,9 +279,9 @@ public class Item extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton logoutBtn;
     private javax.swing.JButton newBtn;
-    private javax.swing.JTextField priceField;
+    public javax.swing.JTextField priceField;
     private javax.swing.JButton saveBtn;
-    private javax.swing.JTextField stockField;
+    public javax.swing.JTextField stockField;
     private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }

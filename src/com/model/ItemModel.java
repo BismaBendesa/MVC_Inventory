@@ -5,8 +5,10 @@
  */
 package com.model;
 
+import com.connection.DbCon;
 import com.controller.ItemController;
 import com.view.Item;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -33,6 +35,20 @@ public class ItemModel implements ItemController {
     @Override
     public void Delete(Item item) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void SetCategoryCb(Item item) throws SQLException {
+        String sql = "SELECT * FROM `category`";
+        ResultSet rs;
+        try{
+            rs = DbCon.getcon().createStatement().executeQuery(sql);
+            while(rs.next()){
+                item.categoryCb.addItem(rs.getString("category_name"));
+            }
+        } catch(Exception e){
+            System.out.println(e);
+        }
     }
     
 }

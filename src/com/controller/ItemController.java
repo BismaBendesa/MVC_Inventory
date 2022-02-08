@@ -17,4 +17,5 @@ public interface ItemController {
     public void New(Item item) throws SQLException;
     public void Edit(Item item) throws SQLException;
     public void Delete(Item item) throws SQLException;
+    public void SetCategoryCb(Item item) throws SQLException;
 }
